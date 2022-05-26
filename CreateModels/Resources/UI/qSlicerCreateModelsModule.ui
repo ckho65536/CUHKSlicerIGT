@@ -147,7 +147,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Next step</string>
+            <string>Next step - Pivot Calibration</string>
            </property>
           </widget>
          </item>

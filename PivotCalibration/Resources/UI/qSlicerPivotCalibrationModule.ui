@@ -175,7 +175,7 @@
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Start collecting data for spin calibration. The calibration will be computed and orientation will be appropriately flipped on completion.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
-         <string>Next step</string>
+         <string>Next step - Fiducial Registration</string>
         </property>
        </widget>
       </item>
@@ -292,12 +292,6 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>qMRMLNodeComboBox</class>
-   <extends>QWidget</extends>
-   <header>qMRMLNodeComboBox.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>qSlicerWidget</class>
    <extends>QWidget</extends>
    <header>qSlicerWidget.h</header>
@@ -319,6 +313,12 @@
    <class>ctkDoubleSpinBox</class>
    <extends>QWidget</extends>
    <header>ctkDoubleSpinBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>qMRMLNodeComboBox</class>
+   <extends>QWidget</extends>
+   <header>qMRMLNodeComboBox.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>
