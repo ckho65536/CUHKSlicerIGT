@@ -32,6 +32,12 @@
 
 #include <vtkMRMLLinearTransformNode.h>
 
+#include "vtkSlicerConfigure.h" // For Slicer_QM_OUTPUT_DIRS, Slicer_BUILD_I18N_SUPPORT, Slicer_USE_PYTHONQT
+
+#ifdef Slicer_USE_PYTHONQT
+#include "PythonQt.h"
+#endif
+
 //-----------------------------------------------------------------------------
 /// \ingroup Slicer_QtModules_ExtensionTemplate
 class qSlicerPivotCalibrationModuleWidgetPrivate: public Ui_qSlicerPivotCalibrationModule
@@ -131,6 +137,7 @@ void qSlicerPivotCalibrationModuleWidget::setup()
 
   connect( d->startPivotButton, SIGNAL( clicked() ), this, SLOT( onStartPivotPart() ) );
   connect( d->startSpinButton, SIGNAL( clicked() ), this, SLOT( onStartSpinPart() ) );
+  connect( d->switchModuleButton, SIGNAL(clicked()), this, SLOT( onNextModuleButtonClicked ()));
 
   connect( d->startupTimerEdit, SIGNAL( valueChanged(double) ), this, SLOT( setStartupDurationSec(double) ) );
   connect( d->durationTimerEdit, SIGNAL( valueChanged(double) ), this, SLOT( setSamplingDurationSec(double) ) );
@@ -166,6 +173,19 @@ void qSlicerPivotCalibrationModuleWidget::onStartSpinPart()
   d->CountdownLabel->setText(ss.str().c_str());
 
   spinStartupTimer->start();
+}
+
+void qSlicerPivotCalibrationModuleWidget::onNextModuleButtonClicked()
+{
+#ifdef Slicer_USE_PYTHONQT
+    PythonQt::init();
+    PythonQtObjectPtr context = PythonQt::self()->getMainModule();
+    context.evalScript(QString(
+        "pluginHandlerSingleton = slicer.qSlicerSubjectHierarchyPluginHandler.instance() \n"
+        "pluginHandlerSingleton.pluginByName('Default').switchToModule('FiducialRegistrationWizard') \n"
+    ));
+
+#endif
 }
 
 

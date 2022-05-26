@@ -51,6 +51,8 @@ protected slots:
   void onPivotStop();
   void onSpinStop();
 
+  void onNextModuleButtonClicked();
+
   void onFlipButtonClicked();
   
   void setStartupDurationSec(double);

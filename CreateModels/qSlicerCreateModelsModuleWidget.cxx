@@ -103,7 +103,7 @@ qSlicerCreateModelsModuleWidget
     PythonQtObjectPtr context = PythonQt::self()->getMainModule();
     context.evalScript(QString(
         "pluginHandlerSingleton = slicer.qSlicerSubjectHierarchyPluginHandler.instance() \n"
-        "pluginHandlerSingleton.pluginByName('Default').switchToModule('DICOM') \n"
+        "pluginHandlerSingleton.pluginByName('Default').switchToModule('PivotCalibration') \n"
     ));
 
 #endif
