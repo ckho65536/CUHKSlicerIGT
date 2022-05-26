@@ -25,7 +25,11 @@
 
 #include "vtkSlicerCreateModelsLogic.h"
 
+#include "vtkSlicerConfigure.h" // For Slicer_QM_OUTPUT_DIRS, Slicer_BUILD_I18N_SUPPORT, Slicer_USE_PYTHONQT
 
+#ifdef Slicer_USE_PYTHONQT
+#include "PythonQt.h"
+#endif
 
 //-----------------------------------------------------------------------------
 /// \ingroup Slicer_QtModules_ExtensionTemplate
@@ -90,6 +94,20 @@ qSlicerCreateModelsModuleWidget
   d->logic()->CreateNeedle( d->NeedleLength->value(), d->NeedleRadius->value(), d->NeedleTipRadius->value(), d->markersCheckBox->isChecked() );
 }
 
+void
+qSlicerCreateModelsModuleWidget
+::OnNextModuleButtonClicked()
+{
+#ifdef Slicer_USE_PYTHONQT
+    PythonQt::init();
+    PythonQtObjectPtr context = PythonQt::self()->getMainModule();
+    context.evalScript(QString(
+        "pluginHandlerSingleton = slicer.qSlicerSubjectHierarchyPluginHandler.instance() \n"
+        "pluginHandlerSingleton.pluginByName('Default').switchToModule('DICOM') \n"
+    ));
+
+#endif
+}
 
 
 void
@@ -146,5 +164,6 @@ void qSlicerCreateModelsModuleWidget::setup()
   connect( d->CreateCylinderButton, SIGNAL( clicked() ), this, SLOT( OnCreateCylinderClicked() ) );
   connect( d->CreateSphereButton, SIGNAL( clicked() ), this, SLOT( OnCreateSphereClicked() ) );
   connect( d->CreateCoordinateButton, SIGNAL( clicked() ), this, SLOT( OnCreateCoordinateClicked() ) );
+  connect(d->SwitchModuleButton, SIGNAL(clicked()), this, SLOT(OnNextModuleButtonClicked()));
 }
 

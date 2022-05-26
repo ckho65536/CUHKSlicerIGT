@@ -45,6 +45,8 @@ public slots:
   void OnCreateCylinderClicked();
   void OnCreateSphereClicked();
   void OnCreateCoordinateClicked();
+  void OnNextModuleButtonClicked();
+  
   
   
 protected:
