@@ -109,7 +109,7 @@ qSlicerCreateModelsModuleWidget
 #endif
 }
 
-
+/*
 void
 qSlicerCreateModelsModuleWidget
 ::OnCreateCubeClicked()
@@ -150,6 +150,7 @@ qSlicerCreateModelsModuleWidget
   
   d->logic()->CreateCoordinate( d->CAxisLengthSpinBox->value(), d->CAxisThicknessSpinBox->value() );
 }
+*/
 
 
 
@@ -160,10 +161,10 @@ void qSlicerCreateModelsModuleWidget::setup()
   this->Superclass::setup();
   
   connect( d->CreateNeedleButton, SIGNAL( clicked() ), this, SLOT( OnCreateNeedleClicked() ) );
-  connect( d->CreateCubeButton, SIGNAL( clicked() ), this, SLOT( OnCreateCubeClicked() ) );
-  connect( d->CreateCylinderButton, SIGNAL( clicked() ), this, SLOT( OnCreateCylinderClicked() ) );
-  connect( d->CreateSphereButton, SIGNAL( clicked() ), this, SLOT( OnCreateSphereClicked() ) );
-  connect( d->CreateCoordinateButton, SIGNAL( clicked() ), this, SLOT( OnCreateCoordinateClicked() ) );
+  //connect( d->CreateCubeButton, SIGNAL( clicked() ), this, SLOT( OnCreateCubeClicked() ) );
+  //connect( d->CreateCylinderButton, SIGNAL( clicked() ), this, SLOT( OnCreateCylinderClicked() ) );
+  //connect( d->CreateSphereButton, SIGNAL( clicked() ), this, SLOT( OnCreateSphereClicked() ) );
+  //connect( d->CreateCoordinateButton, SIGNAL( clicked() ), this, SLOT( OnCreateCoordinateClicked() ) );
   connect(d->SwitchModuleButton, SIGNAL(clicked()), this, SLOT(OnNextModuleButtonClicked()));
 }
 

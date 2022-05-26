@@ -41,10 +41,10 @@ public:
 public slots:
 
   void OnCreateNeedleClicked();
-  void OnCreateCubeClicked();
-  void OnCreateCylinderClicked();
-  void OnCreateSphereClicked();
-  void OnCreateCoordinateClicked();
+  //void OnCreateCubeClicked();
+  //void OnCreateCylinderClicked();
+  //void OnCreateSphereClicked();
+  //void OnCreateCoordinateClicked();
   void OnNextModuleButtonClicked();
   
   
